@@ -19,6 +19,7 @@ export default async function LivePage() {
   ]);
   const darshan = live.filter((l) => l.kind === "darshan");
   const kathas = live.filter((l) => l.kind === "katha");
+  const events = live.filter((l) => l.kind === "event");
   const blogs = news.filter((n) => !n.is_ticker);
 
   return (
@@ -33,7 +34,7 @@ export default async function LivePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="darshan">
         <div className="container">
           <div className="center" style={{ marginBottom: 40 }}>
             <div className="om-divider reveal"><span>🛕</span></div>
@@ -55,25 +56,51 @@ export default async function LivePage() {
         </div>
       </section>
 
-      <section className="section section--soft">
+      <section className="section section--soft" id="katha">
         <div className="container">
           <div className="center" style={{ marginBottom: 40 }}>
             <span className="eyebrow reveal">🎙 Sacred discourses</span>
             <h2 className="section-title reveal">Live Katha</h2>
             <p className="section-lead reveal">Listen to revered kathakaars narrate timeless scriptures, live each day.</p>
           </div>
-          <div className="grid grid-3">
-            {kathas.map((k) => (
-              <div key={k.id} className="temple-card reveal">
-                <div className={"thumb " + (k.thumb || "tg3")}><LiveBadge /><Play /></div>
-                <div className="body"><h4>{k.title}</h4><p><Clock /> {k.place}{k.subtitle ? " · " + k.subtitle : ""}</p></div>
-              </div>
-            ))}
-          </div>
+          {kathas.length === 0 ? (
+            <p className="center" style={{ color: "#9a8b78" }}>No live katha right now — check back soon. 🙏</p>
+          ) : (
+            <div className="grid grid-3">
+              {kathas.map((k) => (
+                <div key={k.id} className="temple-card reveal">
+                  <div className={"thumb " + (k.thumb || "tg3")}><LiveBadge /><Play /></div>
+                  <div className="body"><h4>{k.title}</h4><p><Clock /> {k.place}{k.subtitle ? " · " + k.subtitle : ""}</p></div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="event">
+        <div className="container">
+          <div className="center" style={{ marginBottom: 40 }}>
+            <span className="eyebrow reveal">🎉 Happening now</span>
+            <h2 className="section-title reveal">Live Events</h2>
+            <p className="section-lead reveal">Festivals, satsangs and special religious events — streamed live.</p>
+          </div>
+          {events.length === 0 ? (
+            <p className="center" style={{ color: "#9a8b78" }}>No live events at the moment. Watch this space for upcoming festivals &amp; satsangs. 🙏</p>
+          ) : (
+            <div className="grid grid-3">
+              {events.map((ev) => (
+                <div key={ev.id} className="temple-card reveal">
+                  <div className={"thumb " + (ev.thumb || "tg4")}><LiveBadge /><Play /></div>
+                  <div className="body"><h4>{ev.title}</h4><p><Pin /> {ev.place}{ev.subtitle ? " · " + ev.subtitle : ""}</p></div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="section section--soft">
         <div className="container">
           <div style={{ marginBottom: 34 }}>
             <span className="eyebrow reveal">📰 Stay updated</span>

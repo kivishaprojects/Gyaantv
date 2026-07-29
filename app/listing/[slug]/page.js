@@ -35,6 +35,7 @@ export default async function ListingPage({ params }) {
   if (!item) notFound();
   const meta = catMeta(item.category);
   const vids = videoList(item.youtube_url, item.videos);
+  const gallery = String(item.gallery || "").split(/\n+/).map((s) => s.trim()).filter(Boolean);
   const socials = [
     item.website && ["Website", item.website],
     item.youtube_channel && ["YouTube", item.youtube_channel],
@@ -86,6 +87,16 @@ export default async function ListingPage({ params }) {
               <div className="ms-block">
                 <h2 className="ms-h">About</h2>
                 <p style={{ whiteSpace: "pre-line" }}>{item.about}</p>
+              </div>
+            )}
+            {gallery.length > 0 && (
+              <div className="ms-block">
+                <h2 className="ms-h">Photo Gallery</h2>
+                <div className="ms-gallery">
+                  {gallery.map((src, i) => (
+                    <a key={i} href={src} target="_blank" rel="noreferrer" className="ms-gitem" style={{ backgroundImage: `url(${src})` }} />
+                  ))}
+                </div>
               </div>
             )}
             {vids.length > 0 && (

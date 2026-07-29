@@ -62,6 +62,33 @@ export default async function AboutPage() {
       </section>
 
       <section className="section section--soft">
+        <div className="container" style={{ maxWidth: 980 }}>
+          <div className="center" style={{ marginBottom: 30 }}>
+            <span className="eyebrow reveal">🙏 Our Founder</span>
+            <h2 className="section-title reveal">A message from the Founder</h2>
+          </div>
+          <div className="founder reveal">
+            <div className="founder-photo" style={settings.founder_photo ? { backgroundImage: `url(${settings.founder_photo})` } : undefined}>
+              {!settings.founder_photo && <span>{(settings.founder_name || "GT").slice(0, 2)}</span>}
+            </div>
+            <div>
+              <h3>{settings.founder_name || "Founder"}</h3>
+              <div className="f-role">{settings.founder_role || "Founder & Visionary"}</div>
+              <p className="f-msg">&ldquo;{settings.founder_message || "Bringing the divine closer to every home."}&rdquo;</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container" style={{ maxWidth: 900 }}>
+          <span className="eyebrow">📿 About the Project</span>
+          <h2 className="section-title">What is Gyaan TV</h2>
+          <p style={{ whiteSpace: "pre-line" }}>{settings.project_about || "Gyaan TV is a unified devotional and pilgrimage platform."}</p>
+        </div>
+      </section>
+
+      <section className="section section--soft">
         <div className="container" style={{ maxWidth: 900 }}>
           <span className="eyebrow">🌏 Our Vision</span>
           <h2 className="section-title">To Become the World&apos;s Most Trusted Digital Pilgrimage Ecosystem</h2>

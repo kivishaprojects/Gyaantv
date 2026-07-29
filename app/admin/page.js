@@ -2,6 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { getBrowserClient } from "../lib/supabaseClient";
 import { ENTITIES, ENTITY_KEYS } from "./entities";
+import ImageUpload from "../components/ImageUpload";
 
 export default function AdminPage() {
   const supabase = getBrowserClient();
@@ -243,7 +244,9 @@ function EditModal({ supabase, cfg, pk, row, onClose, onSaved }) {
             return (
               <div className="field" key={fl.name}>
                 <label>{fl.label}{fl.required && " *"}</label>
-                {fl.type === "textarea" ? (
+                {fl.type === "image" || fl.type === "image-multi" ? (
+                  <ImageUpload value={form[fl.name] || ""} multi={fl.type === "image-multi"} onChange={(v) => set(fl.name, v)} hint={fl.hint} />
+                ) : fl.type === "textarea" ? (
                   <textarea value={form[fl.name] || ""} onChange={(e) => set(fl.name, e.target.value)} />
                 ) : fl.type === "bool" ? (
                   <label style={{ display: "flex", alignItems: "center", gap: 10, fontWeight: 400, cursor: "pointer" }}>
@@ -259,7 +262,7 @@ function EditModal({ supabase, cfg, pk, row, onClose, onSaved }) {
                     value={form[fl.name] ?? ""} disabled={disabled}
                     onChange={(e) => set(fl.name, e.target.value)} />
                 )}
-                {fl.hint && fl.type !== "bool" && <p style={{ fontSize: 12, color: "#9a8b78", margin: "5px 2px 0" }}>{fl.hint}</p>}
+                {fl.hint && fl.type !== "bool" && fl.type !== "image" && fl.type !== "image-multi" && <p style={{ fontSize: 12, color: "#9a8b78", margin: "5px 2px 0" }}>{fl.hint}</p>}
               </div>
             );
           })}

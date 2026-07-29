@@ -2,11 +2,12 @@
 import { useEffect, useState, useCallback } from "react";
 import { getBrowserClient } from "../lib/supabaseClient";
 import { slugify, CATEGORY_META } from "../lib/site";
+import ImageUpload from "../components/ImageUpload";
 
 const CATS = Object.keys(CATEGORY_META);
 const EMPTY_EVENT = { title: "", event_type: "", organizer: "", event_date: "", place: "", description: "", contact_phone: "", contact_email: "", image_url: "" };
 const EMPTY_LISTING = {
-  category: "artist", name: "", tagline: "", about: "", image_url: "", cover_url: "",
+  category: "artist", name: "", tagline: "", about: "", image_url: "", cover_url: "", gallery: "",
   youtube_url: "", videos: "", place: "", city: "", state: "", languages: "", established: "",
   contact_phone: "", contact_email: "", website: "", facebook: "", instagram: "", youtube_channel: "",
 };
@@ -169,9 +170,10 @@ function ListingForm({ supabase, session, row, onDone, onCancel }) {
         <div className="field"><label>Tagline</label><input type="text" value={form.tagline} onChange={(e) => set("tagline", e.target.value)} placeholder="e.g. Ram Katha & Bhagwat" /></div>
         <div className="field"><label>About</label><textarea value={form.about} onChange={(e) => set("about", e.target.value)} placeholder="Tell devotees about yourself / your organization…" /></div>
         <div className="ly-row">
-          <div className="field"><label>Photo / Logo URL</label><input type="text" value={form.image_url} onChange={(e) => set("image_url", e.target.value)} placeholder="https://…" /></div>
-          <div className="field"><label>Cover image URL</label><input type="text" value={form.cover_url} onChange={(e) => set("cover_url", e.target.value)} placeholder="https://…" /></div>
+          <div className="field"><label>Photo / Logo</label><ImageUpload value={form.image_url} onChange={(v) => set("image_url", v)} hint="Your profile photo or logo" /></div>
+          <div className="field"><label>Cover / Website banner</label><ImageUpload value={form.cover_url} onChange={(v) => set("cover_url", v)} hint="Wide banner across the top of your page" /></div>
         </div>
+        <div className="field"><label>Photo gallery</label><ImageUpload value={form.gallery} onChange={(v) => set("gallery", v)} multi hint="Upload multiple photos" /></div>
         <div className="field"><label>Main YouTube link</label><input type="text" value={form.youtube_url} onChange={(e) => set("youtube_url", e.target.value)} placeholder="https://youtube.com/watch?v=…" /></div>
         <div className="field"><label>More YouTube links</label><textarea value={form.videos} onChange={(e) => set("videos", e.target.value)} placeholder="One link per line" /></div>
         <div className="ly-row">
