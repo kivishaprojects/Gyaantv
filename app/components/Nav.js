@@ -4,10 +4,12 @@ import LangSwitcher from "./LangSwitcher";
 const LINKS = [
   ["/", "Home"],
   ["/live", "Live"],
+  ["/artists", "Artists"],
   ["/kathakaar", "Kathakaar"],
+  ["/directory", "Directory"],
   ["/programmes", "Programmes"],
   ["/news", "News"],
-  ["/events", "Events"],
+  ["/blog", "Blog"],
   ["/pilgrimage", "Pilgrimage"],
   ["/about", "About"],
 ];
@@ -28,9 +30,8 @@ export default function Nav({ active }) {
             </li>
           ))}
           <li className="nav-lang"><LangSwitcher /></li>
-          <li className="nav-cta">
-            <Link href="/list-yourself" className="btn btn--primary">List Yourself</Link>
-          </li>
+          <li className="nav-cta"><Link href="/list-yourself" className="btn btn--ghost btn--sm">List Yourself</Link></li>
+          <li className="nav-cta"><Link href="/subscribe" className="btn btn--primary btn--sm">Subscribe</Link></li>
         </ul>
         <button className="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>

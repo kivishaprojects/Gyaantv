@@ -148,10 +148,10 @@ function Dashboard({ supabase, session }) {
                       ))}
                       <td>
                         <div className="row-actions">
-                          {active === "events" && row.status !== "approved" && (
+                          {(active === "events" || active === "listings") && row.status !== "approved" && (
                             <button className="mini-btn ok" onClick={() => setStatus(row, "approved")}>Approve</button>
                           )}
-                          {active === "events" && row.status === "approved" && (
+                          {(active === "events" || active === "listings") && row.status === "approved" && (
                             <button className="mini-btn" onClick={() => setStatus(row, "pending")}>Unpublish</button>
                           )}
                           <button className="mini-btn" onClick={() => setEditing(row)}>Edit</button>

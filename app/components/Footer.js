@@ -30,11 +30,14 @@ export default function Footer({ settings = {} }) {
           <div className="footer-col">
             <h5>Explore</h5>
             <ul>
-              <li><Link href="/kathakaar">Kathakaar</Link></li>
-              <li><Link href="/pilgrimage">51 Shakti Peeth</Link></li>
-              <li><Link href="/pilgrimage">12 Jyotirling</Link></li>
-              <li><Link href="/pilgrimage">Famous Mandir</Link></li>
-              <li><Link href="/about">About Gyaan TV</Link></li>
+              <li><Link href="/directory">Directory</Link></li>
+              <li><Link href="/artists">Artists</Link></li>
+              <li><Link href="/kathakaar">Kathakaars</Link></li>
+              <li><Link href="/trusts">Trusts &amp; NGOs</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/subscribe">Subscribe ₹1/day</Link></li>
+              <li><Link href="/list-yourself">List Yourself</Link></li>
+              <li><Link href="/about">About Us</Link></li>
             </ul>
           </div>
           <div className="footer-col">
