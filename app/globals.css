@@ -221,3 +221,19 @@ body{top:0!important}
 .ms-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
 .ms-gitem{aspect-ratio:1;border-radius:12px;background:var(--cream-2) center/cover no-repeat;border:1px solid var(--line);transition:transform .18s}
 .ms-gitem:hover{transform:scale(1.03)}
+
+/* ===== Top nav one-line fix ===== */
+.nav-links a{white-space:nowrap}
+.nav-links .has-sub > a{white-space:nowrap}
+.nav{gap:10px}
+.nav-links{gap:2px}
+@media (max-width:1300px){
+  .nav-links a{padding:8px 9px;font-size:13.5px}
+  .nav-lang{margin-left:2px}
+  .nav-cta .btn--sm{padding:8px 12px;font-size:12px}
+}
+@media (min-width:681px) and (max-width:1080px){
+  .brand-logo{height:42px}
+  .nav-links a{padding:7px 7px;font-size:13px}
+  .lang-btn{padding:7px 9px;font-size:12.5px}
+}
